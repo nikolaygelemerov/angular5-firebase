@@ -13,9 +13,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 	constructor(private db: AngularFireDatabase) {}
 
 	public ngOnInit(): void {
-		this.databaseSubscription = this.db.list('/profile')
+		this.databaseSubscription = this.db.list('/')
 			.snapshotChanges()
 			.map(actions => {
+				console.log('actions: ', actions);
 				return actions.map(action => action.payload.val());
 			}).subscribe(
 				items => console.log('fetch from database: ', items),
@@ -25,5 +26,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	public ngOnDestroy(): void {
 		this.databaseSubscription.unsubscribe();
+	}
+
+	public saveUser(): void {
+		console.log(this.db.database.ref().child('test').set('Some Value'));
 	}
 }

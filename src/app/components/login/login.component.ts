@@ -24,6 +24,7 @@ export class LoginComponent implements OnDestroy {
 			.subscribe(auth => {
 				if (auth != null) {
 					this.user = af.authState;
+					console.log('user: ', this.user);
 					this.authenticated = true;
 					this.router.navigate(['/home']);
 				}
