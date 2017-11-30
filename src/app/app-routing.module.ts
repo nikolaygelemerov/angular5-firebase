@@ -7,7 +7,13 @@ import {HomeComponent} from './components/home/home.component';
 const APP_ROUTES: Routes = [
 	{
 		path: '',
-		component: HomeComponent
+		redirectTo: '/home',
+		pathMatch: 'full'
+	},
+	{
+		path: 'home',
+		component: HomeComponent,
+		canActivate: [HomeGuardService]
 	},
 	{
 		path: 'login',
