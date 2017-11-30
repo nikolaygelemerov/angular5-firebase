@@ -1,0 +1,4 @@
+<div class="panel panel-default">
+	<button *ngIf="!authenticated" class="btn-primary" (click)="login()">Login</button>
+	<button *ngIf="authenticated" class="btn-danger" (click)="signOut()">SignOut</button>
+</div>
